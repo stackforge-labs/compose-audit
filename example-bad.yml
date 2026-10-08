@@ -1,0 +1,14 @@
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    environment:
+      DB_PASSWORD: hunter2
+  db:
+    image: postgres:16.4
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - /var/run/docker.sock:/s
